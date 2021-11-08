@@ -23,11 +23,11 @@ const create_item = () => {
   item.draggable = true;
 
   item.addEventListener('dragstart', (event) => {
-    event.dataTransfer.setData('text', event.target.id);
+    return event.dataTransfer.setData('text', event.target.id);
   });
 
   item.addEventListener('dragend', (event) => {
-    event.dataTransfer.clearData();
+    return event.dataTransfer.clearData();
   });
 
   let input = document.createElement('input');
@@ -62,9 +62,8 @@ document.querySelectorAll('.drop').forEach(element => {
     const id = event.dataTransfer.getData('text');
 
     event.target.appendChild(document.getElementById(id));
-    
-    element.addEventListener('dragover', (event) => {
-      event.preventDefault();
-    });
+  });
+  element.addEventListener('dragover', (event) => {
+    return event.preventDefault();
   });
 });
